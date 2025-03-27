@@ -27,7 +27,6 @@ jobs:
         run: |
           git remote add upstream https://github.com/arindampande/GHA_Test.git || true
           git fetch upstream
-          git checkout $FORK_BRANCH
 
       - name: Check for changes
         id: check_changes
@@ -46,7 +45,7 @@ jobs:
         run: |
           gh pr create \
             --base $FORK_BRANCH \
-            --head arindampande:$UPSTREAM_BRANCH \
+            --head arindampande/GHA_Test:$UPSTREAM_BRANCH \
             --title "🔄 Daily Sync: Upstream to Fork" \
             --body "Automated PR to sync fork with upstream repo."
           
