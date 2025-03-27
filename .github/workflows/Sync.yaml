@@ -19,9 +19,9 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up GitHub CLI
+      - name: Set up GitHub CLI with PAT
         run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+          echo "${{ secrets.PAT_TOKEN }}" | gh auth login --with-token
 
       - name: Add Upstream and Fetch Changes
         run: |
