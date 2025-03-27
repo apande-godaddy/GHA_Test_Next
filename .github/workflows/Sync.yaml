@@ -27,6 +27,7 @@ jobs:
         run: |
           git remote add upstream https://github.com/arindampande/GHA_Test.git || true
           git fetch upstream
+          git checkout $FORK_BRANCH
 
       - name: Check for changes
         id: check_changes
