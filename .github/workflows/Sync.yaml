@@ -49,6 +49,5 @@ jobs:
             --head arindampande:$UPSTREAM_BRANCH \
             --title "🔄 Daily Sync: Upstream to Fork" \
             --body "Automated PR to sync fork with upstream repo." \
-            --assignee your-username \
             --label "sync"
           
