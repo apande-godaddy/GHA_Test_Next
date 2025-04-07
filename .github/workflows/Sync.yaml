@@ -8,7 +8,6 @@ on:
 env:
   FORK_BRANCH: main  
   UPSTREAM_BRANCH: main
-  GH_TOKEN: ${{ secrets.PAT_TOKEN }}
 
 jobs:
   sync-fork:
@@ -21,7 +20,9 @@ jobs:
           persist-credentials: false
 
       - name: Authenticate GitHub CLI
-        run: gh auth status
+        run: |
+          export GH_TOKEN="${{ secrets.PAT_TOKEN }}"
+          gh auth status
   
       - name: Create Pull Request
         run: |
