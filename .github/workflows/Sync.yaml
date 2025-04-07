@@ -20,9 +20,11 @@ jobs:
           persist-credentials: false
 
       - name: Set up GitHub CLI with PAT
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          echo "${{ secrets.PAT_TOKEN }}" | gh auth login --with-token
-
+          gh auth status
+  
       - name: Create Pull Request
         run: |
           gh pr create \
