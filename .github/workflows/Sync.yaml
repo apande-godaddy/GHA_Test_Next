@@ -28,7 +28,7 @@ jobs:
           gh pr create \
             --repo apande-godaddy/GHA_Test_Next \
             --base $FORK_BRANCH \
-            --head arindampande/GHA_Test:$UPSTREAM_BRANCH \
+            --head arindampande:GHA_Test:$UPSTREAM_BRANCH \
             --title "🔄 Daily Sync: Upstream to Fork" \
             --body "Automated PR to sync fork with upstream repo."
           
