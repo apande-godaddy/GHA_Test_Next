@@ -22,32 +22,13 @@ jobs:
       - name: Set up GitHub CLI with PAT
         run: |
           echo "${{ secrets.PAT_TOKEN }}" | gh auth login --with-token
-
-      - name: Add Upstream and Fetch Changes
-        run: |
-          git remote add upstream https://github.com/arindampande/GHA_Test.git || true
-          git fetch upstream
-          git checkout $FORK_BRANCH
-
-      - name: Check for changes
-        id: check_changes
-        run: |
-          git fetch upstream $UPSTREAM_BRANCH
-          BEHIND_CHANGES=$(git rev-list --count $FORK_BRANCH..upstream/$UPSTREAM_BRANCH)
-
-          echo "Commits behind upstream: $BEHIND_CHANGES"
-
-          if [ "$BEHIND_CHANGES" -eq "0" ]; then
-            echo "No new changes in upstream. Exiting."
-            exit 0
-          fi
-
+  
       - name: Create Pull Request
         run: |
           gh pr create \
             --repo apande-godaddy/GHA_Test_Next \
             --base $FORK_BRANCH \
-            --head arindampande:$UPSTREAM_BRANCH \
+            --head arindampande:GHA_Test:$UPSTREAM_BRANCH \
             --title "🔄 Daily Sync: Upstream to Fork" \
             --body "Automated PR to sync fork with upstream repo."
           
