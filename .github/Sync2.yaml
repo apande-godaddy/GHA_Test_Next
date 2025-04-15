@@ -1,0 +1,22 @@
+name: Sync Fork
+
+on:
+  # schedule:
+  #   - cron: '*/30 * * * *' # every 30 minutes
+  workflow_dispatch: # on button click
+
+jobs:
+  sync:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: tgymnich/fork-sync@v2.0
+        with:
+          owner: arindampande
+          repo: GHA_Test_Next
+          base: main
+          head: main
+          token: ${{ secrets.PAT_TOKEN }}
+          pr_title: "🔄 Sync Fork: Update from Upstream"
+          pr_message: "This pull request syncs the forked repository with the upstream repository."
