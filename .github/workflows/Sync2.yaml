@@ -17,6 +17,8 @@ jobs:
           repo: GHA_Test_Next
           base: main
           head: main
+          autoApprove: false
+          autoMerge: false
           token: ${{ secrets.PAT_TOKEN }}
           pr_title: "🔄 Sync Fork: Update from Upstream"
           pr_message: "This pull request syncs the forked repository with the upstream repository."
