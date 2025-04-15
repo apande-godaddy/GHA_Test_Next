@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: tgymnich/fork-sync@v2.0
         with:
-          owner: arindampande
+          owner: apande-godaddy
           repo: GHA_Test_Next
           base: main
           head: main
